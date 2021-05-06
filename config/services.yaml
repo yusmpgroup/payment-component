@@ -1,0 +1,22 @@
+services:
+    _defaults:
+        public: true
+        autowire: true
+        autoconfigure: true
+        bind:
+            $transactionHandlers: !tagged app.transaction_handler
+            $paymentFactoryHandlers: !tagged app.payment_factory_handler
+            $payPalClientId: '%env(PAYPAL_CLIENT_ID)%'
+            $payPalSecret: '%env(PAYPAL_SECRET)%'
+
+    _instanceof:
+        Yusmp\PaymentComponent\Service\Handler\TransactionHandlerInterface:
+            tags: ['app.transaction_handler']
+        Yusmp\PaymentComponent\Service\Factory\PaymentFactoryHandlerInterface:
+            tags: ['app.payment_factory_handler']
+
+    Yusmp\PaymentComponent\:
+        resource: '%kernel.project_dir%/src/Cwl/Bundle/CoreBundle/Module/Payment/*'
+        exclude:
+            - '../DTO/*'
+            - '../Event/*'

@@ -1,0 +1,13 @@
+{
+    "name": "yusmp/payment-component",
+    "description": "Payment module for YUSMP projects",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nikita Obukhov",
+            "email": "n.obukhov@yusmpgroup.com"
+        }
+    ],
+    "require": {}
+}
